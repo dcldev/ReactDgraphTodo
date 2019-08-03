@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route} from "react-router-dom";
+import { Nav, Navbar } from "react-bootstrap";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import CreateToDo from "./components/create-todo.comp";
+import EditToDo from "./components/edit-todo.comp";
+import TodoList from "./components/todo-list.comp";
+
+export default class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="container">
+          <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="#home">Komihana Todo App</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link href="/">View List</Nav.Link>
+              <Nav.Link href="/create">Create ToDo</Nav.Link>
+            </Nav>
+          </Navbar>
+          <br/>
+          <Route path="/" exact component={TodoList} />
+          <Route path="/edit/:id" component={EditToDo} />
+          <Route path="/create" component={CreateToDo} />
+        </div>
+      
+      </Router>
+    );
+  }
 }
-
-export default App;
