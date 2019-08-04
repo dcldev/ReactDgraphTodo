@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
+import axios from "axios";
 
 export default class CreateTodo extends Component {
   constructor(props) {
@@ -49,6 +50,17 @@ export default class CreateTodo extends Component {
     console.log(`Todo Responsible: ${this.state.todo_responsible}`);
     console.log(`Todo Priority: ${this.state.todo_priority}`);
 
+    const newTodo = {
+      todo_description: this.state.todo_description,
+      todo_responsible: this.state.todo_responsible,
+      todo_priority: this.state.todo_priority,
+      todo_completed: this.state.todo_completed
+    };
+
+    axios
+      .post("http://localhost:4000/todos/add", newTodo)
+      .then(res => console.log(res.data));
+
     //when the completed form is submitted it will set the state to the new values recorded
     this.setState({
       todo_description: "",
@@ -87,9 +99,9 @@ export default class CreateTodo extends Component {
               onChange={this.onChangeTodoResponsible}
             />
           </Form.Group>
-{/* fieldset is like a div but used as a way to group */}
+          {/* fieldset is like a div but used as a way to group */}
           <fieldset>
-            <Form.Group className="form-group" as={Row} >
+            <Form.Group className="form-group" as={Row}>
               <Form.Label as="legend" column sm={2}>
                 Priority
               </Form.Label>
@@ -100,7 +112,7 @@ export default class CreateTodo extends Component {
                   name="priorityOptions"
                   id="priorityLow"
                   value="Low"
-                  checked={this.state.todo_priority==='Low'}
+                  checked={this.state.todo_priority === "Low"}
                   onChange={this.onChangeTodoPriority}
                 />
                 <Form.Check
@@ -109,7 +121,7 @@ export default class CreateTodo extends Component {
                   name="priorityOptions"
                   id="priorityMedium"
                   value="Medium"
-                  checked={this.state.todo_priority==='Medium'}
+                  checked={this.state.todo_priority === "Medium"}
                   onChange={this.onChangeTodoPriority}
                 />
                 <Form.Check
@@ -118,18 +130,14 @@ export default class CreateTodo extends Component {
                   name="priorityOptions"
                   id="priorityHigh"
                   value="High"
-                  checked={this.state.todo_priority==='High'}
+                  checked={this.state.todo_priority === "High"}
                   onChange={this.onChangeTodoPriority}
                 />
               </Col>
             </Form.Group>
           </fieldset>
 
-          <Button 
-            variant="warning" 
-            type="submit"
-            value="Create Todo"
-            >
+          <Button variant="warning" type="submit" value="Create Todo">
             Create Todo
           </Button>
         </Form>
