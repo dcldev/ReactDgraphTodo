@@ -17,8 +17,8 @@ const Todo = props => (
     <td className={props.todo.todo_completed ? "completed" : ""}>
       {props.todo.todo_priority}
     </td>
-    <td className={props.todo.todo_completed ? "completed" : ""}>
-      {props.todo.todo_completed}
+    <td>
+      {props.todo.todo_completed ? "Yes" : "No"}
     </td>
   </tr>
 );
@@ -31,6 +31,17 @@ export default class TodosList extends Component {
   }
 
   componentDidMount() {
+    axios
+      .get("http://localhost:4000/todos/")
+      .then(response => {
+        this.setState({ todos: response.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
+  componentDidUpdate() {
     axios
       .get("http://localhost:4000/todos/")
       .then(response => {
