@@ -62,7 +62,7 @@ export default class CreateTodo extends Component {
     return (
       <div style={{ marginTop: "2em" }}>
         <h3>Create New Todo</h3>
-        <Form onSubmit="form-group">
+        <Form onSubmit={this.onSubmit}>
           <Form.Group className="form-group">
             <Form.Label>Description: </Form.Label>
             <Form.Control
@@ -125,7 +125,11 @@ export default class CreateTodo extends Component {
             </Form.Group>
           </fieldset>
 
-          <Button variant="primary" type="submit">
+          <Button 
+            variant="warning" 
+            type="submit"
+            value="Create Todo"
+            >
             Create Todo
           </Button>
         </Form>
