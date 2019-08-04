@@ -75,7 +75,7 @@ export default class CreateTodo extends Component {
       <div style={{ marginTop: "2em" }}>
         <h3>Create New Todo</h3>
         <Form onSubmit={this.onSubmit}>
-          <Form.Group className="form-group">
+          <Form.Group>
             <Form.Label>Description: </Form.Label>
             <Form.Control
               type="text"
@@ -89,7 +89,7 @@ export default class CreateTodo extends Component {
             </Form.Text>
           </Form.Group>
 
-          <Form.Group className="form-group">
+          <Form.Group>
             <Form.Label>Responsible: </Form.Label>
             <Form.Control
               type="text"
@@ -101,7 +101,7 @@ export default class CreateTodo extends Component {
           </Form.Group>
           {/* fieldset is like a div but used as a way to group */}
           <fieldset>
-            <Form.Group className="form-group" as={Row}>
+            <Form.Group as={Row}>
               <Form.Label as="legend" column sm={2}>
                 Priority
               </Form.Label>
