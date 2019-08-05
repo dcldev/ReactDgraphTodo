@@ -7,6 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateToDo from "./components/create-todo.comp";
 import EditToDo from "./components/edit-todo.comp";
 import TodoList from "./components/todo-list.comp";
+import EditToDoModal from "./components/modal-edit-todo.comp";
+
+import CreateTodoModal from "./components/modal-create-todo.comp";
 
 export default class App extends Component {
   render() {
@@ -14,10 +17,10 @@ export default class App extends Component {
       <Router>
         <div className="container">
           <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">Komihana Todo App</Navbar.Brand>
+            <Navbar.Brand href="http://www.komihana.com">Komihana Todo App</Navbar.Brand>
             <Nav className="mr-auto">
               <Nav.Link href="/">View List</Nav.Link>
-              <Nav.Link href="/create">Create ToDo</Nav.Link>
+              <CreateTodoModal/>
             </Nav>
           </Navbar>
           <br/>

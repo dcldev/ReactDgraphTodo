@@ -72,8 +72,7 @@ export default class CreateTodo extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: "2em" }}>
-        <h3>Create New Todo</h3>
+      <div>
         <Form onSubmit={this.onSubmit}>
           <Form.Group>
             <Form.Label>Description: </Form.Label>
@@ -138,7 +137,7 @@ export default class CreateTodo extends Component {
           </fieldset>
 
           <Button variant="warning" type="submit" value="Create Todo">
-            Create Todo
+            Add
           </Button>
         </Form>
       </div>
