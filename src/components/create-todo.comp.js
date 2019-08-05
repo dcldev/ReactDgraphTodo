@@ -137,7 +137,7 @@ export default class CreateTodo extends Component {
           </fieldset>
 
           <Button variant="warning" type="submit" value="Create Todo">
-            Add
+            Add Task
           </Button>
         </Form>
       </div>
