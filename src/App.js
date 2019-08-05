@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateToDo from "./components/create-todo.comp";
 import EditToDo from "./components/edit-todo.comp";
 import TodoList from "./components/todo-list.comp";
-import EditToDoModal from "./components/modal-edit-todo.comp";
 
 import CreateTodoModal from "./components/modal-create-todo.comp";
 
@@ -19,13 +18,14 @@ export default class App extends Component {
           <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="http://www.komihana.com">Komihana Todo App</Navbar.Brand>
             <Nav className="mr-auto">
-              <Nav.Link href="/">View List</Nav.Link>
+              <Nav.Link href="/todos">View List</Nav.Link>
               <CreateTodoModal/>
             </Nav>
           </Navbar>
           <br/>
-          <Route path="/" exact component={TodoList} />
-          <Route path="/edit/:id" component={EditToDo} />
+          <Route path="/" exact component={TodoList}/>
+          <Route path="/todos/" component={TodoList} />
+          <Route path="/todos/:id" component={EditToDo} />
           <Route path="/create" component={CreateToDo} />
         </div>
       
