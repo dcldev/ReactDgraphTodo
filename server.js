@@ -4,12 +4,22 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router();
-const PORT = 4000;
+const PORT =  process.env.PORT || 3001;
 
 let Todo = require('./todo.model');
 
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/3000";
+mongoose.connect(MONGODB_URI);
+// var dbConnection = mongoose.connection;
+
 app.use(cors());
 app.use(bodyParser.json());
+
+app.use(express.json()); // uses everything is json
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") { // compress version and faster
+  app.use(express.static("client/build")); 
+}
 
 mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
 const connection = mongoose.connection;
