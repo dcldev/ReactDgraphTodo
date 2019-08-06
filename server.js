@@ -8,10 +8,6 @@ const PORT =  process.env.PORT || 4000;
 
 let Todo = require('./todo.model');
 
-// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/todos";
-// mongoose.connect(MONGODB_URI);
-
-
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -21,12 +17,16 @@ if (process.env.NODE_ENV === "production") { // compress version and faster
   app.use(express.static("client/build")); 
 }
 
-mongoose.connect('mongodb://127.0.0.1:27017/todos' || process.env.MONGODB_URI, { useNewUrlParser: true });
-const connection = mongoose.connection;
+var MONGODB = process.env.MONGODB_URI;
+mongoose.connect(MONGODB);
 
-connection.once('open', function() {
-    console.log("MongoDB database connection established successfully");
-})
+
+// mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+// const connection = mongoose.connection;
+
+// connection.once('open', function() {
+//     console.log("MongoDB database connection established successfully");
+// })
 
 todoRoutes.route('/').get(function(req, res) {
     Todo.find(function(err, todos) {
