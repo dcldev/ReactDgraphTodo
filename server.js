@@ -17,11 +17,12 @@ app.use(express.json()); // uses everything is json
 //   app.use(express.static("client/build")); 
 // }
 
-const MONGODB_URI = process.env.MONGOLAB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // || "mongodb://127.0.0.1:27017/todos"
 
-mongoose.connect(MONGODB_URI || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
+
+mongoose.connect("mongodb://<dbuser>:<dbpassword>@ds259577.mlab.com:59577/heroku_hvbhctx2" || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
