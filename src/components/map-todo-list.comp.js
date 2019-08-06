@@ -7,6 +7,7 @@ const Todo = props => (
     <td>
       <Link to={`/todos/${props.todo._id}`}>Edit</Link>
     </td>
+    
     <td className={props.todo.todo_completed ? "completed" : ""}>
       {props.todo.todo_description}
     </td>

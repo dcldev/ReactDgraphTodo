@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Form, Col, Row, Button, Modal } from "react-bootstrap";
+import { Form, Col, Row, Button, ButtonToolbar, Modal } from "react-bootstrap";
 
 export default class EditTodo extends Component {
   constructor(props) {
@@ -12,6 +12,7 @@ export default class EditTodo extends Component {
     this.onChangeTodoPriority = this.onChangeTodoPriority.bind(this);
     this.onChangeTodoCompleted = this.onChangeTodoCompleted.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
 
     this.close = this.close.bind(this);
     this.open = this.open.bind(this);
@@ -96,6 +97,17 @@ export default class EditTodo extends Component {
     this.props.history.push("/");
   }
 
+  onDelete(e) {
+    e.preventDefault();
+
+    axios
+      .delete(
+        "http://localhost:4000/todos/delete/" + this.props.match.params.id
+      )
+      .then(res => console.log(res.data));
+
+  }
+
   close() {
     this.setState({ showModal: false });
   }
@@ -112,7 +124,7 @@ export default class EditTodo extends Component {
             <Modal.Title>Edit Task</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={this.onSubmit}>
+            <Form>
               <Form.Group className="form-group">
                 <Form.Label>Description: </Form.Label>
                 <Form.Control
@@ -186,10 +198,26 @@ export default class EditTodo extends Component {
                   />
                 </Form.Group>
               </fieldset>
+              <ButtonToolbar>
+                <Button
+                  variant="success"
+                  type="submit"
+                  value="Update Todo"
+                  onClick={this.onSubmit}
+                >
+                  Update Task
+                </Button>
 
-              <Button variant="warning" type="submit" value="Update Todo">
-                Update Task
-              </Button>
+                <Button
+                  variant="danger"
+                  type="delete"
+                  value="Delete Todo"
+                  onClick={this.onDelete}
+                  style={{marginLeft : '5px'}}
+                >
+                  Delete Task
+                </Button>
+              </ButtonToolbar>
             </Form>
           </Modal.Body>
           <Modal.Footer>
