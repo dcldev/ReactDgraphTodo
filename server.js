@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -22,7 +24,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // || "mongodb://127.0.0.1:27017/todos"
 
 
-mongoose.connect("mongodb://root:leet123@ds259577.mlab.com:59577/heroku_hvbhctx2" || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
