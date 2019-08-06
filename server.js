@@ -8,9 +8,9 @@ const PORT =  process.env.PORT || 4000;
 
 let Todo = require('./todo.model');
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/3000";
-mongoose.connect(MONGODB_URI);
-// var dbConnection = mongoose.connection;
+// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/todos";
+// mongoose.connect(MONGODB_URI);
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "production") { // compress version and faster
   app.use(express.static("client/build")); 
 }
 
-mongoose.connect('mongodb://127.0.0.1:27017/todos', { useNewUrlParser: true });
+mongoose.connect('mongodb://127.0.0.1:27017/todos' || process.env.MONGODB_URI, { useNewUrlParser: true });
 const connection = mongoose.connection;
 
 connection.once('open', function() {
