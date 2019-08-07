@@ -15,15 +15,15 @@ app.use(bodyParser.json());
 
 
 app.use(express.json()); // uses everything is json
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") { // compress version and faster
-  app.use(express.static("client/build")); 
-} require('dotenv').config();
+// // Serve up static assets (usually on heroku)
+// if (process.env.NODE_ENV === "production") { // compress version and faster
+//   app.use(express.static("client/build")); 
+// } require('dotenv').config();
 
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true })
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
     .then(() => {
         console.log("database has successfully connected");
     }) 
