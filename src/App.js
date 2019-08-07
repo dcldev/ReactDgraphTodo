@@ -6,7 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateToDo from "./components/create-todo.comp";
 import EditToDo from "./components/edit-todo.comp";
 import TodoList from "./components/todo-list.comp";
-
 import TaskMasterNavBar from "./components/komihana-nav.comp";
 
 
