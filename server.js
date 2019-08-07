@@ -16,12 +16,9 @@ require('dotenv').config();
 
 app.use(express.json()); // uses everything is json
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") { // compress version and faster
-//   app.use(express.static("client/build")); 
-// }
-
-//test
-
+if (process.env.NODE_ENV === "production") { // compress version and faster
+  app.use(express.static("client/build")); 
+}
 
 mongoose.connect(MONGODB_URI || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
 const connection = mongoose.connection;
