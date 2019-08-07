@@ -6,7 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router();
 const PORT =  process.env.PORT || 4000;
-
+const MONGODB_URI = process.env.MONGODB_URI;
 
 let Todo = require('./todo.model');
 
@@ -21,9 +21,6 @@ app.use(express.json()); // uses everything is json
 // }
 
 //test
-
-
-// const MONGODB_URI = process.env.MONGODB_URI;
 
 
 mongoose.connect(MONGODB_URI || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
