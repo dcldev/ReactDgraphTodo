@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -7,21 +6,21 @@ const mongoose = require('mongoose');
 const todoRoutes = express.Router();
 const PORT =  process.env.PORT || 4000;
 
-
 let Todo = require('./todo.model');
 
 app.use(cors());
 app.use(bodyParser.json());
 
-
 app.use(express.json()); // uses everything is json
-// // Serve up static assets (usually on heroku)
+// Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") { // compress version and faster
 //   app.use(express.static("client/build")); 
-// } require('dotenv').config();
+// }
 
+const MONGODB_URI = process.env.MONGODB_URI;
 
-// const MONGODB_URI = process.env.MONGODB_URI;
+// || "mongodb://127.0.0.1:27017/todos"
+
 
 mongoose.connect("mongodb://root:leet123@ds259577.mlab.com:59577/heroku_hvbhctx2" || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
 const connection = mongoose.connection;
@@ -30,6 +29,7 @@ connection.once('open', function() {
     console.log("MongoDB database connection established successfully");
 })
 
+// mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/todos');
 
 todoRoutes.route('/').get(function(req, res) {
     Todo.find(function(err, todos) {
