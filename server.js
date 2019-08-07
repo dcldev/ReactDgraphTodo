@@ -13,9 +13,9 @@ app.use(bodyParser.json());
 
 app.use(express.json()); // uses everything is json
 // Serve up static assets (usually on heroku)
-// if (process.env.NODE_ENV === "production") { // compress version and faster
-//   app.use(express.static("client/build")); 
-// }
+if (process.env.NODE_ENV === "production") { // compress version and faster
+  app.use(express.static("client/build")); 
+}
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
