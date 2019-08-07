@@ -1,8 +1,4 @@
-import dotenv from "dotenv";
-
-require('dotenv').config();
-
-
+const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -16,6 +12,7 @@ let Todo = require('./todo.model');
 
 app.use(cors());
 app.use(bodyParser.json());
+require('dotenv').config();
 
 app.use(express.json()); // uses everything is json
 // Serve up static assets (usually on heroku)
@@ -26,7 +23,7 @@ app.use(express.json()); // uses everything is json
 //test
 
 
-const MONGODB_URI = process.env.MONGODB_URI;
+// const MONGODB_URI = process.env.MONGODB_URI;
 
 
 mongoose.connect(MONGODB_URI || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
