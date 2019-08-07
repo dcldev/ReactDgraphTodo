@@ -1,4 +1,7 @@
+import dotenv from "dotenv";
+
 require('dotenv').config();
+
 
 const express = require('express');
 const app = express();
@@ -7,6 +10,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const todoRoutes = express.Router();
 const PORT =  process.env.PORT || 4000;
+
 
 let Todo = require('./todo.model');
 
