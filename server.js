@@ -21,9 +21,9 @@ app.use(express.json()); // uses everything is json
 // } require('dotenv').config();
 
 
-const MONGODB_URI = process.env.MONGODB_URI;
+// const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true })
+mongoose.connect("mongodb://root:leet123@ds259577.mlab.com:59577/heroku_hvbhctx2I", { useNewUrlParser: true })
     .then(() => {
         console.log("database has successfully connected");
     }) 
