@@ -19,6 +19,9 @@ app.use(express.json()); // uses everything is json
 //   app.use(express.static("client/build")); 
 // }
 
+//test
+
+
 const MONGODB_URI = process.env.MONGODB_URI;
 
 
