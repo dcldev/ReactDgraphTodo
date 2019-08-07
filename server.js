@@ -23,13 +23,12 @@ app.use(express.json()); // uses everything is json
 
 // const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect("mongodb://root:leet123@ds259577.mlab.com:59577/heroku_hvbhctx2I", { useNewUrlParser: true })
-    .then(() => {
-        console.log("database has successfully connected");
-    }) 
-    .catch(() => {
-    });
+mongoose.connect("mongodb://root:leet123@ds259577.mlab.com:59577/heroku_hvbhctx2" || "mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
+const connection = mongoose.connection;
 
+connection.once('open', function() {
+    console.log("MongoDB database connection established successfully");
+})
 
 
 todoRoutes.route('/').get(function(req, res) {
